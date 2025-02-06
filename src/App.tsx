@@ -24,7 +24,6 @@ function App() {
       flexDirection='column'
       alignItems='center'
       justifyContent='flex-start'
-      paddingTop={150}
       gap={5}
     >
       <Stack gap={5} align='center' width='100%'>
