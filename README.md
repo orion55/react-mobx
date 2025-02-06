@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+### Задача: **"Дашборд с асинхронными данными и MobX"**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Условие:**  
+Требуется реализовать простое React-приложение с MobX, которое:
+1. Загружает список пользователей с сервера (используй `https://jsonplaceholder.typicode.com/users`).
+2. Позволяет фильтровать пользователей по имени.
+3. Показывает индикатор загрузки при запросе.
+4. Оптимально обновляет компоненты (избегает лишних ререндеров).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Требования к реализации:**
+- Использовать **MobX** (`makeAutoObservable`, `observer` и т. д.).
+- Асинхронность должна быть реализована корректно (через `async/await`).
+- Корректно обновлять состояние при получении данных.
+- Избегать ненужных ререндеров (например, мемоизировать вычисляемые данные).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### **Пример интерфейса:**
+1. **Поле ввода** для фильтрации пользователей.
+2. **Список пользователей** с именем и email.
+3. **Загрузка** – отображение "Loading..." вместо списка, пока данные загружаются.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+### **Дополнительные вопросы для кандидата:**
+1. Как MobX управляет реактивностью?
+2. Чем `observable` отличается от `computed` и `action`?
+3. Как `observer` помогает избежать лишних ререндеров?
+4. Как сделать так, чтобы поиск не триггерил повторную загрузку данных?
+5. Что произойдёт, если в `useEffect` не указать зависимости?
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+**Бонус:** если кандидат предложит использовать `runInAction` или `reaction` – плюс к оценке.
